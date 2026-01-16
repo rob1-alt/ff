@@ -223,7 +223,7 @@ export default function Home() {
               className="text-base md:text-lg text-[#1a1a1a]/60 max-w-lg mx-auto mb-5 leading-relaxed animate-fade-in-up opacity-0 font-[family-name:var(--font-instrument)]"
               style={{ animationDelay: "200ms", animationFillMode: "forwards" }}
             >
-              Join thousands of pioneers shaping tomorrow. Be among the first to experience 
+              Join a growing community of pioneers shaping tomorrow. Be among the first to experience 
               what&apos;s next in innovation.
             </p>
 
@@ -275,7 +275,7 @@ export default function Home() {
                         Joining...
                       </span>
                     ) : (
-                      "Join Waitlist"
+                      "Get Event Early Access"
                     )}
                   </button>
                 </form>

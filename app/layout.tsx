@@ -51,7 +51,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${cormorant.variable} ${instrumentSans.variable} antialiased`}>
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+        <meta name="theme-color" content="#F5F0E8" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+      </head>
+      <body className={`${cormorant.variable} ${instrumentSans.variable} antialiased bg-[#F5F0E8]`}>
         {children}
       </body>
     </html>

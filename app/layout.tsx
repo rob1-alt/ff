@@ -17,7 +17,31 @@ const instrumentSans = Instrument_Sans({
 
 export const metadata: Metadata = {
   title: "Fontaine Founders",
-  description: "Join the waitlist for something extraordinary",
+  description: "Join the waitlist for something extraordinary. Be among the first to experience what's next in innovation.",
+  icons: {
+    icon: "/logoFF.png",
+    apple: "/logoFF.png",
+  },
+  openGraph: {
+    title: "Fontaine Founders",
+    description: "Join the waitlist for something extraordinary. Be among the first to experience what's next in innovation.",
+    images: [
+      {
+        url: "/hero.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Fontaine Founders",
+      },
+    ],
+    type: "website",
+    siteName: "Fontaine Founders",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Fontaine Founders",
+    description: "Join the waitlist for something extraordinary.",
+    images: ["/hero.jpg"],
+  },
 };
 
 export default function RootLayout({

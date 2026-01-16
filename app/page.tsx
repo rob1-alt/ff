@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import confetti from "canvas-confetti";
 
 // Countdown component with flip animation
 function CountdownButton() {
@@ -88,16 +89,77 @@ export default function Home() {
   const [email, setEmail] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  // Scrolling title effect
+  useEffect(() => {
+    const title = "Fontaine Founders — Join the waitlist ✦ ";
+    let index = 0;
+    
+    const scrollTitle = () => {
+      document.title = title.slice(index) + title.slice(0, index);
+      index = (index + 1) % title.length;
+    };
+    
+    const interval = setInterval(scrollTitle, 200);
+    return () => clearInterval(interval);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
     
     setIsLoading(true);
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    setIsLoading(false);
-    setIsSubmitted(true);
+    setError("");
+    
+    try {
+      const response = await fetch("/api/waitlist", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to subscribe");
+      }
+
+      setIsSubmitted(true);
+      
+      // 🎉 Confetti celebration!
+      const duration = 3000;
+      const end = Date.now() + duration;
+
+      const frame = () => {
+        confetti({
+          particleCount: 3,
+          angle: 60,
+          spread: 55,
+          origin: { x: 0, y: 0.6 },
+          colors: ['#1a1a1a', '#F5F0E8', '#d4a574', '#8b7355'],
+        });
+        confetti({
+          particleCount: 3,
+          angle: 120,
+          spread: 55,
+          origin: { x: 1, y: 0.6 },
+          colors: ['#1a1a1a', '#F5F0E8', '#d4a574', '#8b7355'],
+        });
+
+        if (Date.now() < end) {
+          requestAnimationFrame(frame);
+        }
+      };
+      frame();
+      
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Something went wrong");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -133,9 +195,6 @@ export default function Home() {
               <div className="hidden md:flex items-center gap-8">
                 <a href="#" className="text-[#1a1a1a]/60 hover:text-[#1a1a1a] transition-colors text-sm font-medium font-[family-name:var(--font-instrument)]">
                   About
-                </a>
-                <a href="#" className="text-[#1a1a1a]/60 hover:text-[#1a1a1a] transition-colors text-sm font-medium font-[family-name:var(--font-instrument)]">
-                  Features
                 </a>
                 <a href="#" className="text-[#1a1a1a]/60 hover:text-[#1a1a1a] transition-colors text-sm font-medium font-[family-name:var(--font-instrument)]">
                   Contact
@@ -232,9 +291,38 @@ export default function Home() {
                 </div>
               )}
 
-              <p className="text-[#1a1a1a]/40 text-xs mt-3 font-[family-name:var(--font-instrument)]">
-                No spam, ever. Unsubscribe anytime.
-              </p>
+              {error && (
+                <p className="text-red-500 text-xs mt-2 font-[family-name:var(--font-instrument)]">
+                  {error}
+                </p>
+              )}
+
+              {/* Social proof */}
+              <div className="flex items-center justify-center gap-3 mt-4">
+                <div className="flex -space-x-2">
+                  {[
+                    "https://i.pravatar.cc/80?img=1",
+                    "https://i.pravatar.cc/80?img=3",
+                    "https://i.pravatar.cc/80?img=5",
+                    "https://i.pravatar.cc/80?img=6",
+                    "https://i.pravatar.cc/80?img=7",
+                  ].map((src, i) => (
+                    <div
+                      key={i}
+                      className="w-7 h-7 rounded-full border-2 border-[#F5F0E8] overflow-hidden"
+                    >
+                      <img
+                        src={src}
+                        alt=""
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  ))}
+                </div>
+                <p className="text-[#1a1a1a]/60 text-xs font-[family-name:var(--font-instrument)]">
+                  Join <span className="font-[family-name:var(--font-cormorant)] italic font-bold text-sm text-[#1a1a1a]">50+ builders</span> already
+                </p>
+              </div>
             </div>
           </div>
         </main>

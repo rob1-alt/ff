@@ -12,7 +12,7 @@ function CountdownButton() {
   useEffect(() => {
     setMounted(true);
     
-    const targetDate = new Date("2026-02-01T00:00:00").getTime();
+    const targetDate = new Date("2026-02-06T18:00:00-08:00").getTime();
     
     const calculateTimeLeft = () => {
       const now = new Date().getTime();
@@ -163,7 +163,7 @@ export default function Home() {
   };
 
   return (
-    <div className="relative h-screen w-full overflow-hidden">
+    <div className="relative min-h-screen w-full">
       {/* Beige background */}
       <div className="fixed inset-0 z-0 bg-[#F5F0E8]" />
       
@@ -176,7 +176,7 @@ export default function Home() {
       />
 
       {/* Content */}
-      <div className="relative z-10 h-screen flex flex-col">
+      <div className="relative z-10 flex flex-col min-h-screen">
         
         {/* Navbar */}
         <nav className="shrink-0 px-6 py-3">
@@ -207,7 +207,7 @@ export default function Home() {
         </nav>
 
         {/* Hero Section - Centered */}
-        <main className="flex-1 flex items-center justify-center px-6 py-4 overflow-hidden">
+        <main className="flex-1 flex flex-col items-center justify-center px-6 py-12">
           <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
 
             {/* H1 - Playfair Display Italic (old style font) */}
@@ -220,11 +220,11 @@ export default function Home() {
 
             {/* Subtext - Instrument Sans */}
             <p 
-              className="text-base md:text-lg text-[#1a1a1a]/60 max-w-lg mx-auto mb-5 leading-relaxed animate-fade-in-up opacity-0 font-[family-name:var(--font-instrument)]"
+              className="text-base md:text-lg text-[#1a1a1a]/60 max-w-2xl mx-auto mb-5 leading-relaxed animate-fade-in-up opacity-0 font-[family-name:var(--font-instrument)]"
               style={{ animationDelay: "200ms", animationFillMode: "forwards" }}
             >
-              Join a growing community of pioneers shaping tomorrow. Be among the first to experience 
-              what&apos;s next in innovation.
+Join a community of entrepreneurs building in San Francisco.
+Be among the first to experience a hacker house where ideas ship fast and people come together around work, dinners, and curated events.
             </p>
 
             {/* Hero Image */}
@@ -264,7 +264,7 @@ export default function Home() {
                   <button
                     type="submit"
                     disabled={isLoading}
-                    className="bg-[#1a1a1a] hover:bg-[#333] px-6 py-3 rounded-xl text-white font-bold text-sm whitespace-nowrap disabled:opacity-70 disabled:cursor-not-allowed transition-all hover:scale-[1.02] font-[family-name:var(--font-instrument)]"
+                    className="bg-[#1a1a1a] hover:bg-[#333] px-8 py-4 rounded-xl text-white font-bold text-sm whitespace-nowrap disabled:opacity-70 disabled:cursor-not-allowed transition-all hover:scale-[1.02] font-[family-name:var(--font-instrument)]"
                   >
                     {isLoading ? (
                       <span className="flex items-center justify-center gap-2">
@@ -275,7 +275,7 @@ export default function Home() {
                         Joining...
                       </span>
                     ) : (
-                      "Get Event Early Access"
+                      "Join Waitlist"
                     )}
                   </button>
                 </form>
@@ -322,6 +322,79 @@ export default function Home() {
                 <p className="text-[#1a1a1a]/60 text-xs font-[family-name:var(--font-instrument)]">
                   Join <span className="font-[family-name:var(--font-cormorant)] italic font-bold text-sm text-[#1a1a1a]">50+ builders</span> already
                 </p>
+              </div>
+            </div>
+
+            {/* Upcoming Event Section */}
+            <div 
+              className="mt-16 w-full max-w-2xl animate-fade-in-up opacity-0"
+              style={{ animationDelay: "400ms", animationFillMode: "forwards" }}
+            >
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-2xl font-[family-name:var(--font-cormorant)] italic font-medium text-[#1a1a1a]">Next Gathering</h2>
+                <div className="h-px flex-1 mx-4 bg-black/10" />
+              </div>
+              
+              <div 
+                className="relative bg-white/40 backdrop-blur-md border border-black/5 rounded-2xl p-6 text-left overflow-hidden"
+              >
+                {/* Decorative background element */}
+                <div className="absolute -right-8 -top-8 w-32 h-32 bg-[#e8943a]/5 rounded-full blur-2xl transition-colors" />
+                
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="px-2 py-0.5 rounded-full bg-[#e8943a]/10 text-[#e8943a] text-[10px] font-bold tracking-wider uppercase font-[family-name:var(--font-instrument)]">
+                        Welcome Drink
+                      </span>
+                      <span className="text-[#1a1a1a]/30 text-xs font-[family-name:var(--font-instrument)]">•</span>
+                      <span className="text-[#1a1a1a]/60 text-xs font-[family-name:var(--font-instrument)]">San Francisco, CA</span>
+                    </div>
+                    
+                    <h3 className="text-2xl font-[family-name:var(--font-cormorant)] italic font-semibold text-[#1a1a1a] mb-2 leading-tight">
+                      FF Hacker House Welcome Drink
+                    </h3>
+                    
+                    <p className="text-sm text-[#1a1a1a]/60 font-[family-name:var(--font-instrument)] leading-relaxed max-w-md">
+                      An informal drink to open the house, meet the founders, and discover the community being built around ambition and shared values.
+                    </p>
+                  </div>
+                  
+                  <div className="shrink-0 flex flex-col items-start md:items-end gap-1">
+                    <div className="text-right">
+                      <p className="text-xs text-[#1a1a1a]/40 font-[family-name:var(--font-instrument)] uppercase tracking-widest mb-1">Friday</p>
+                      <p className="text-lg font-bold text-[#1a1a1a] font-[family-name:var(--font-instrument)]">Feb 6, 2026</p>
+                      <p className="text-xs text-[#1a1a1a]/40 font-[family-name:var(--font-instrument)]">18:00 - 21:30</p>
+                    </div>
+                    <div className="mt-4 md:mt-2">
+                      <a 
+                        href="https://luma.com/n8ui3x4t" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="relative overflow-hidden group px-6 py-3 rounded-xl text-white font-bold text-sm whitespace-nowrap transition-all hover:scale-[1.02] font-[family-name:var(--font-instrument)] inline-flex items-center gap-2 shadow-sm shadow-black/10"
+                      >
+                        {/* Background gradient image */}
+                        <div 
+                          className="absolute inset-0 z-0 transition-transform duration-500 group-hover:scale-110"
+                          style={{
+                            backgroundImage: "url('/gradient.jpg')",
+                            backgroundSize: "cover",
+                            backgroundPosition: "center",
+                          }}
+                        />
+                        {/* Overlay for text readability */}
+                        <div className="absolute inset-0 z-10 bg-black/10 group-hover:bg-black/0 transition-colors" />
+                        
+                        <span className="relative z-20 flex items-center gap-2">
+                          RSVP ON LUMA 
+                          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                          </svg>
+                        </span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

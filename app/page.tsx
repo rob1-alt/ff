@@ -360,18 +360,18 @@ Be among the first to experience a hacker house where ideas ship fast and people
                     </p>
                   </div>
                   
-                  <div className="shrink-0 flex flex-col items-start md:items-end gap-1">
-                    <div className="text-right">
-                      <p className="text-xs text-[#1a1a1a]/40 font-[family-name:var(--font-instrument)] uppercase tracking-widest mb-1">Friday</p>
-                      <p className="text-lg font-bold text-[#1a1a1a] font-[family-name:var(--font-instrument)]">Feb 6, 2026</p>
+                  <div className="shrink-0 flex flex-row md:flex-col items-center md:items-end justify-between md:justify-center gap-4 md:gap-1 border-t md:border-t-0 border-black/5 pt-4 md:pt-0">
+                    <div className="text-left md:text-right">
+                      <p className="hidden md:block text-xs text-[#1a1a1a]/40 font-[family-name:var(--font-instrument)] uppercase tracking-widest mb-1">Friday</p>
+                      <p className="text-base md:text-lg font-bold text-[#1a1a1a] font-[family-name:var(--font-instrument)]">Feb 6, 2026</p>
                       <p className="text-xs text-[#1a1a1a]/40 font-[family-name:var(--font-instrument)]">18:00 - 21:30</p>
                     </div>
-                    <div className="mt-4 md:mt-2">
+                    <div className="mt-0 md:mt-2">
                       <a 
                         href="https://luma.com/n8ui3x4t" 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        className="relative overflow-hidden group px-6 py-3 rounded-xl text-white font-bold text-sm whitespace-nowrap transition-all hover:scale-[1.02] font-[family-name:var(--font-instrument)] inline-flex items-center gap-2 shadow-sm shadow-black/10"
+                        className="relative overflow-hidden group px-5 py-2.5 md:px-6 md:py-3 rounded-xl text-white font-bold text-xs md:text-sm whitespace-nowrap transition-all hover:scale-[1.02] font-[family-name:var(--font-instrument)] inline-flex items-center gap-2 shadow-sm shadow-black/10"
                       >
                         {/* Background gradient image */}
                         <div 
@@ -386,8 +386,8 @@ Be among the first to experience a hacker house where ideas ship fast and people
                         <div className="absolute inset-0 z-10 bg-black/10 group-hover:bg-black/0 transition-colors" />
                         
                         <span className="relative z-20 flex items-center gap-2">
-                          RSVP ON LUMA 
-                          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          RSVP
+                          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                           </svg>
                         </span>

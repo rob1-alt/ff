@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import confetti from "canvas-confetti";
 
 // Countdown component with flip animation
@@ -179,7 +180,7 @@ export default function Home() {
       <div className="relative z-10 flex flex-col min-h-screen">
         
         {/* Navbar */}
-        <nav className="shrink-0 px-6 py-3">
+        <nav className="sticky top-0 z-50 shrink-0 px-6 py-3 transition-all">
           <div className="max-w-3xl mx-auto">
             <div className="bg-white/60 backdrop-blur-xl border border-black/5 rounded-2xl px-5 py-2 flex items-center justify-between shadow-sm">
               <div className="flex items-center gap-3">
@@ -193,10 +194,10 @@ export default function Home() {
               </div>
               
               <div className="hidden md:flex items-center gap-8">
-                <a href="#" className="text-[#1a1a1a]/60 hover:text-[#1a1a1a] transition-colors text-sm font-medium font-[family-name:var(--font-instrument)]">
+                <Link href="/about" className="text-[#1a1a1a]/60 hover:text-[#1a1a1a] transition-colors text-sm font-medium font-[family-name:var(--font-instrument)]">
                   About
-                </a>
-                <a href="#" className="text-[#1a1a1a]/60 hover:text-[#1a1a1a] transition-colors text-sm font-medium font-[family-name:var(--font-instrument)]">
+                </Link>
+                <a href="#contact" className="text-[#1a1a1a]/60 hover:text-[#1a1a1a] transition-colors text-sm font-medium font-[family-name:var(--font-instrument)]">
                   Contact
                 </a>
               </div>

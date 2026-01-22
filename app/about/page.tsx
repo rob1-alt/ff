@@ -39,7 +39,7 @@ export default function About() {
       role: "Co-Founder",
       linkedin: "https://www.linkedin.com/in/achille-dehaine/",
       description: "Bioengineer building a longevity startup focused on preventive health and helping HR teams better manage employee health and performance. Ambitious, determined, and resilient.",
-      image: "/achille.jpeg"
+      image: "/Achille.jpeg"
     },
     {
       name: "Dany Delacour",

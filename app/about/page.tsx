@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import Navbar from "@/components/Navbar";
 
 export default function About() {
   // Scrolling title effect (reused from home page for consistency)
@@ -87,35 +88,7 @@ export default function About() {
       {/* Content */}
       <div className="relative z-10 flex flex-col min-h-screen">
         
-        {/* Navbar - Sticky */}
-        <nav className="sticky top-0 z-50 shrink-0 px-6 py-3 transition-all">
-          <div className="max-w-3xl mx-auto">
-            <div className="bg-white/60 backdrop-blur-xl border border-black/5 rounded-2xl px-5 py-2 flex items-center justify-between shadow-sm">
-              <Link href="/" className="flex items-center gap-3">
-                <Image 
-                  src="/logoFF.png" 
-                  alt="ff logo" 
-                  width={36} 
-                  height={36}
-                  className="rounded-lg"
-                />
-              </Link>
-              
-              <div className="flex items-center gap-8">
-                <Link href="/about" className="text-[#1a1a1a] transition-colors text-sm font-medium font-[family-name:var(--font-instrument)]">
-                  About
-                </Link>
-                <Link href="/#contact" className="text-[#1a1a1a]/60 hover:text-[#1a1a1a] transition-colors text-sm font-medium font-[family-name:var(--font-instrument)]">
-                  Contact
-                </Link>
-              </div>
-
-              <Link href="/" className="bg-[#1a1a1a] px-4 py-2 rounded-xl text-white font-semibold text-sm font-[family-name:var(--font-instrument)]">
-                Back Home
-              </Link>
-            </div>
-          </div>
-        </nav>
+        <Navbar />
 
         {/* Main Content */}
         <main className="flex-1 px-6 py-12 md:py-20">

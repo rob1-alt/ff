@@ -61,6 +61,13 @@ export default function About() {
       linkedin: "https://www.linkedin.com/in/robin-pautigny",
       description: "Tech profile graduate from an Engineering school. Launch 2 startup, build now the future of marketing on AI searches",
       image: "/robin.jpg"
+    },
+    {
+      name: "Rodrigo Gaona",
+      role: "Co-Founder",
+      linkedin: "https://www.linkedin.com/in/rgaonag/",
+      description: "Early employee at 3 fintech startups, 4 years of experience in software engineering. Winner of the biggest blockchain hackathon, and won a space startup competition which put my name on a satellite. Currently exploring the crossroad of hardware + ai",
+      image: "/rodrigo.png"
     }
   ];
 

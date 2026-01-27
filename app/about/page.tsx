@@ -46,7 +46,7 @@ export default function About() {
       name: "Dany Delacour",
       role: "Co-Founder",
       linkedin: "https://www.linkedin.com/in/dany-delacour-aa6916309/",
-      description: "Griding",
+      description: "Grinding",
       image: "/dany.jpg"
     },
     {

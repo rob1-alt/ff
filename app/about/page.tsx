@@ -23,7 +23,7 @@ export default function About() {
   const teamMembers = [
     {
       name: "Mathieu Metral",
-      role: "Co-Founder & CEO",
+      role: "Co-Founder & CEO  ",
       linkedin: "https://www.linkedin.com/in/mathieu-metral-39238617b/",
       description: "What defines me is action: I’ve generated over €2M in revenue across three ventures. I studied Information Systems and Management and trained in data science and AI, which gives me a solid tech understanding. But what I love most is building go-to-market strategies, selling, and staying close to users. I've worked in two startups and an incubator. ",
       image: "/mathieu.jpg"
@@ -43,7 +43,7 @@ export default function About() {
       image: "/Achille.jpeg"
     },
     {
-      name: "Dany Delacour",
+      name: "Dany Delacour ",
       role: "Co-Founder",
       linkedin: "https://www.linkedin.com/in/dany-delacour-aa6916309/",
       description: "Grinding",

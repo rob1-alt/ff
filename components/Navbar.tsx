@@ -24,11 +24,36 @@ function TimeUnit({ value, label, isSeconds = false }: { value: number; label: s
 function CountdownButton() {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   const [mounted, setMounted] = useState(false);
+  const [targetDate, setTargetDate] = useState<number | null>(null);
 
   useEffect(() => {
     setMounted(true);
-    const targetDate = new Date("2026-02-06T18:00:00-08:00").getTime();
     
+    // Fetch the next event to get its date
+    const fetchEventDate = async () => {
+      try {
+        const response = await fetch('/api/events');
+        const data = await response.json();
+        if (data && data.date) {
+          // Parse the date (e.g., "Feb 14, 2026")
+          // We assume the time from the data or default to 18:00
+          const eventDate = new Date(`${data.date} 18:00:00`).getTime();
+          setTargetDate(eventDate);
+        } else {
+          // Fallback date if fetch fails
+          setTargetDate(new Date("2026-02-06T18:00:00-08:00").getTime());
+        }
+      } catch (err) {
+        setTargetDate(new Date("2026-02-06T18:00:00-08:00").getTime());
+      }
+    };
+
+    fetchEventDate();
+  }, []);
+
+  useEffect(() => {
+    if (!targetDate) return;
+
     const calculateTimeLeft = () => {
       const now = new Date().getTime();
       const difference = targetDate - now;
@@ -46,7 +71,7 @@ function CountdownButton() {
     setTimeLeft(calculateTimeLeft());
     const timer = setInterval(() => setTimeLeft(calculateTimeLeft()), 1000);
     return () => clearInterval(timer);
-  }, []);
+  }, [targetDate]);
 
   if (!mounted) return (
     <div className="bg-[#1a1a1a] px-4 py-2 rounded-xl text-white font-semibold text-sm font-[family-name:var(--font-instrument)]">
@@ -55,12 +80,6 @@ function CountdownButton() {
   );
 
   const isLaunched = timeLeft.days === 0 && timeLeft.hours === 0 && timeLeft.minutes === 0 && timeLeft.seconds === 0;
-
-  if (isLaunched) return (
-    <button className="bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 px-5 py-2 rounded-xl text-white font-bold text-sm font-[family-name:var(--font-instrument)] animate-pulse shadow-lg shadow-emerald-500/30">
-      🚀 Live Now!
-    </button>
-  );
 
   return (
     <div className="flex items-center gap-1 bg-[#1a1a1a] px-3 py-1.5 rounded-xl font-[family-name:var(--font-instrument)]">

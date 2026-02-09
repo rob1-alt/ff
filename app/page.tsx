@@ -11,6 +11,32 @@ export default function Home() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const [nextEvent, setNextEvent] = useState({
+    title: "FIND YOUR CO-FOUNDER",
+    date: "Feb 14, 2026",
+    time: "3:00 PM - 5:00 PM",
+    location: "San Francisco, CA",
+    description: "A dedicated networking event for founders looking to meet their perfect match. Whether you're a tech wizard looking for a business mind or vice versa, this is the place to be.",
+    tag: "Co-Founder Match",
+    link: "https://luma.com/fk9z9g8t",
+    day: "Saturday"
+  });
+
+  // Fetch latest event info
+  useEffect(() => {
+    const fetchLatestEvent = async () => {
+      try {
+        const response = await fetch('/api/events');
+        const data = await response.json();
+        if (data && !data.error) {
+          setNextEvent(data);
+        }
+      } catch (err) {
+        console.error("Failed to fetch event:", err);
+      }
+    };
+    fetchLatestEvent();
+  }, []);
 
   // Scrolling title effect
   useEffect(() => {
@@ -240,30 +266,30 @@ Be among the first to experience a hacker house where ideas ship fast and people
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-2">
                       <span className="px-2 py-0.5 rounded-full bg-[#e8943a]/10 text-[#e8943a] text-[10px] font-bold tracking-wider uppercase font-[family-name:var(--font-instrument)]">
-                        Welcome Drink
+                        {nextEvent.tag}
                       </span>
                       <span className="text-[#1a1a1a]/30 text-xs font-[family-name:var(--font-instrument)]">•</span>
-                      <span className="text-[#1a1a1a]/60 text-xs font-[family-name:var(--font-instrument)]">San Francisco, CA</span>
+                      <span className="text-[#1a1a1a]/60 text-xs font-[family-name:var(--font-instrument)]">{nextEvent.location}</span>
                     </div>
                     
                     <h3 className="text-2xl font-[family-name:var(--font-cormorant)] italic font-semibold text-[#1a1a1a] mb-2 leading-tight">
-                      FF Hacker House Welcome Drink
+                      {nextEvent.title}
                     </h3>
                     
                     <p className="text-sm text-[#1a1a1a]/60 font-[family-name:var(--font-instrument)] leading-relaxed max-w-md">
-                      An informal drink to open the house, meet the founders, and discover the community being built around ambition and shared values.
+                      {nextEvent.description}
                     </p>
                   </div>
                   
                   <div className="shrink-0 flex flex-row md:flex-col items-center md:items-end justify-between md:justify-center gap-4 md:gap-1 border-t md:border-t-0 border-black/5 pt-4 md:pt-0">
                     <div className="text-left md:text-right">
-                      <p className="hidden md:block text-xs text-[#1a1a1a]/40 font-[family-name:var(--font-instrument)] uppercase tracking-widest mb-1">Friday</p>
-                      <p className="text-base md:text-lg font-bold text-[#1a1a1a] font-[family-name:var(--font-instrument)]">Feb 6, 2026</p>
-                      <p className="text-xs text-[#1a1a1a]/40 font-[family-name:var(--font-instrument)]">18:00 - 21:30</p>
+                      <p className="hidden md:block text-xs text-[#1a1a1a]/40 font-[family-name:var(--font-instrument)] uppercase tracking-widest mb-1">{nextEvent.day}</p>
+                      <p className="text-base md:text-lg font-bold text-[#1a1a1a] font-[family-name:var(--font-instrument)]">{nextEvent.date}</p>
+                      <p className="text-xs text-[#1a1a1a]/40 font-[family-name:var(--font-instrument)]">{nextEvent.time}</p>
                     </div>
                     <div className="mt-0 md:mt-2">
                       <a 
-                        href="https://luma.com/n8ui3x4t" 
+                        href={nextEvent.link} 
                         target="_blank" 
                         rel="noopener noreferrer"
                         className="relative overflow-hidden group px-5 py-2.5 md:px-6 md:py-3 rounded-xl text-white font-bold text-xs md:text-sm whitespace-nowrap transition-all hover:scale-[1.02] font-[family-name:var(--font-instrument)] inline-flex items-center gap-2 shadow-sm shadow-black/10"

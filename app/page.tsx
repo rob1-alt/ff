@@ -241,6 +241,14 @@ Be among the first to experience a hacker house where ideas ship fast and people
                   title="Fontaine Founders events on Luma"
                 />
               </div>
+              <div className="flex items-center justify-between mb-6 py-4">
+                <h2 className="text-2xl font-[family-name:var(--font-cormorant)] italic font-medium text-[#1a1a1a]">Pitch Contest</h2>
+                <div className="h-px flex-1 mx-4 bg-black/10" />
+              </div>
+              <div className="flex items-center justify-center gap-3 mt-4">
+              <iframe src="https://orange-hunter-0e5.notion.site/ebd//329966cfefc480078a2be56766903a8f" width="100%" height="600" frameBorder="0" allowFullScreen />
+              
+              </div>
             </div>
           </div>
         </main>

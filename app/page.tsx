@@ -2,17 +2,12 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import confetti from "canvas-confetti";
 import Navbar from "@/components/Navbar";
 
 export default function Home() {
-  const [email, setEmail] = useState("");
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState("");
   // Scrolling title effect
   useEffect(() => {
-    const title = "Fontaine Founders — Join the waitlist ✦ ";
+    const title = "Fontaine Founders — Apply to Batch #2 ✦ ";
     let index = 0;
     
     const scrollTitle = () => {
@@ -23,63 +18,6 @@ export default function Home() {
     const interval = setInterval(scrollTitle, 200);
     return () => clearInterval(interval);
   }, []);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email) return;
-    
-    setIsLoading(true);
-    setError("");
-    
-    try {
-      const response = await fetch("/api/waitlist", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || "Failed to subscribe");
-      }
-
-      setIsSubmitted(true);
-      
-      // 🎉 Confetti celebration!
-      const duration = 3000;
-      const end = Date.now() + duration;
-
-      const frame = () => {
-        confetti({
-          particleCount: 3,
-          angle: 60,
-          spread: 55,
-          origin: { x: 0, y: 0.6 },
-          colors: ['#1a1a1a', '#F5F0E8', '#d4a574', '#8b7355'],
-        });
-        confetti({
-          particleCount: 3,
-          angle: 120,
-          spread: 55,
-          origin: { x: 1, y: 0.6 },
-          colors: ['#1a1a1a', '#F5F0E8', '#d4a574', '#8b7355'],
-        });
-
-        if (Date.now() < end) {
-          requestAnimationFrame(frame);
-        }
-      };
-      frame();
-      
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Something went wrong");
-    } finally {
-      setIsLoading(false);
-    }
-  };
 
   return (
     <div className="relative min-h-screen w-full">
@@ -139,56 +77,25 @@ Be among the first to experience a hacker house where ideas ship fast and people
 
             {/* CTA Section - Centered */}
             <div 
-              className="w-full max-w-md animate-fade-in-up opacity-0"
+              className="w-full max-w-sm animate-fade-in-up opacity-0"
               style={{ animationDelay: "300ms", animationFillMode: "forwards" }}
             >
-              {!isSubmitted ? (
-                <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-2">
-                  <div className="flex-1 relative">
-                    <input
-                      type="email"
-                      placeholder="Enter your email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      className="w-full px-4 py-3 rounded-xl bg-white/70 border border-black/10 text-[#1a1a1a] placeholder:text-[#1a1a1a]/40 focus:border-[#1a1a1a]/30 focus:bg-white transition-all font-[family-name:var(--font-instrument)] text-sm"
-                      required
-                    />
-                  </div>
-                  <button
-                    type="submit"
-                    disabled={isLoading}
-                    className="bg-[#1a1a1a] hover:bg-[#333] px-8 py-4 rounded-xl text-white font-bold text-sm whitespace-nowrap disabled:opacity-70 disabled:cursor-not-allowed transition-all hover:scale-[1.02] font-[family-name:var(--font-instrument)]"
-                  >
-                    {isLoading ? (
-                      <span className="flex items-center justify-center gap-2">
-                        <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24">
-                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
-                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-                        </svg>
-                        Joining...
-                      </span>
-                    ) : (
-                      "Join Waitlist"
-                    )}
-                  </button>
-                </form>
-              ) : (
-                <div className="bg-white/70 backdrop-blur-sm border border-black/5 rounded-2xl p-4 text-center">
-                  <div className="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center mx-auto mb-3">
-                    <svg className="w-6 h-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <h3 className="text-lg font-bold text-[#1a1a1a] mb-1 font-[family-name:var(--font-instrument)]">You&apos;re on the list!</h3>
-                  <p className="text-[#1a1a1a]/60 text-sm font-[family-name:var(--font-instrument)]">We&apos;ll notify you when we launch.</p>
-                </div>
-              )}
-
-              {error && (
-                <p className="text-red-500 text-xs mt-2 font-[family-name:var(--font-instrument)]">
-                  {error}
+              <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSdyv1uqC-AnFXZ0Dy3Q9GAU6V1jGNcs0pDBLA1d-8ccGozPXg/viewform?usp=dialog"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group block w-full rounded-2xl bg-[#1a1a1a] px-5 py-4 text-center text-white shadow-xl shadow-black/20 transition-all hover:-translate-y-0.5 hover:bg-[#2b2b2b] hover:shadow-2xl"
+              >
+                <p className="font-[family-name:var(--font-instrument)] text-[11px] uppercase tracking-[0.14em] text-white/70">
+                  Fontaine Founders Batch #2
                 </p>
-              )}
+                <p className="mt-1.5 font-[family-name:var(--font-instrument)] text-lg font-bold md:text-xl">
+                  Apply for the Next Batch
+                </p>
+                <p className="mt-1.5 font-[family-name:var(--font-instrument)] text-xs text-white/80">
+                  May 1 - July 13 in San Francisco
+                </p>
+              </a>
 
               {/* Social proof */}
               <div className="flex items-center justify-center gap-3 mt-4">

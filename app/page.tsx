@@ -77,25 +77,44 @@ Be among the first to experience a hacker house where ideas ship fast and people
 
             {/* CTA Section - Centered */}
             <div 
-              className="w-full max-w-sm animate-fade-in-up opacity-0"
+              className="w-full max-w-xl animate-fade-in-up opacity-0"
               style={{ animationDelay: "300ms", animationFillMode: "forwards" }}
             >
-              <a
-                href="https://docs.google.com/forms/d/e/1FAIpQLSdyv1uqC-AnFXZ0Dy3Q9GAU6V1jGNcs0pDBLA1d-8ccGozPXg/viewform?usp=dialog"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group block w-full rounded-2xl bg-[#1a1a1a] px-5 py-4 text-center text-white shadow-xl shadow-black/20 transition-all hover:-translate-y-0.5 hover:bg-[#2b2b2b] hover:shadow-2xl"
-              >
-                <p className="font-[family-name:var(--font-instrument)] text-[11px] uppercase tracking-[0.14em] text-white/70">
-                  Fontaine Founders Batch #2
-                </p>
-                <p className="mt-1.5 font-[family-name:var(--font-instrument)] text-lg font-bold md:text-xl">
-                  Apply for the Next Batch
-                </p>
-                <p className="mt-1.5 font-[family-name:var(--font-instrument)] text-xs text-white/80">
-                  May 1 - July 13 in San Francisco
-                </p>
-              </a>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <a
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSdyv1uqC-AnFXZ0Dy3Q9GAU6V1jGNcs0pDBLA1d-8ccGozPXg/viewform?usp=dialog"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex-1 block rounded-2xl bg-[#1a1a1a] px-7 py-6 text-center text-white shadow-xl shadow-black/20 transition-all hover:-translate-y-0.5 hover:bg-[#2b2b2b] hover:shadow-2xl"
+                >
+                  <p className="font-[family-name:var(--font-instrument)] text-[11px] uppercase tracking-[0.14em] text-white/70">
+                    Fontaine Founders Batch #2
+                  </p>
+                  <p className="mt-1.5 font-[family-name:var(--font-instrument)] text-lg font-bold md:text-xl">
+                    Apply for the Next Batch
+                  </p>
+                  <p className="mt-1.5 font-[family-name:var(--font-instrument)] text-xs text-white/80">
+                    May 1 - July 13 in San Francisco
+                  </p>
+                </a>
+
+                <a
+                  href="https://forms.gle/FzxaeZWK7HrZR1DF8"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex-1 block rounded-2xl bg-white/60 border border-black/10 px-7 py-6 text-center text-[#1a1a1a] shadow-lg shadow-black/5 transition-all hover:-translate-y-0.5 hover:bg-white"
+                >
+                  <p className="font-[family-name:var(--font-instrument)] text-[11px] uppercase tracking-[0.14em] text-[#1a1a1a]/60">
+                    Sponsorship
+                  </p>
+                  <p className="mt-1.5 font-[family-name:var(--font-instrument)] text-lg font-bold md:text-xl">
+                    Want to be a sponsor
+                  </p>
+                  <p className="mt-1.5 font-[family-name:var(--font-instrument)] text-xs text-[#1a1a1a]/70">
+                    Agentic hackathon (Apr 4)
+                  </p>
+                </a>
+              </div>
 
               {/* Social proof */}
               <div className="flex items-center justify-center gap-3 mt-4">

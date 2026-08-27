@@ -9,6 +9,20 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: "/",
+        destination: "https://getrefine.ai",
+        permanent: true,
+      },
+      {
+        source: "/:path*",
+        destination: "https://getrefine.ai/:path*",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
